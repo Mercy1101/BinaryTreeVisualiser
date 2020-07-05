@@ -1,49 +1,48 @@
 #pragma once
-#include <vector>
 #include <QPoint>
+#include <vector>
 
 namespace Tree {
-	struct Data {
-		int val;
-        int level;
-        int pos;
-        int posX{0};
-        int posY{0};
-        bool new_node{false};
-	};
-	
-	class Node
-	{
-	public:
-        const int DrawingSize{34};
-        const QPoint start_pos{360,150};
+struct Data {
+  int val;
+  int level;
+  int pos;
+  int posX{0};
+  int posY{0};
+  bool new_node{false};
+};
 
-		static int left_nodes;
-		static int right_nodes;
-        Data _data;
+class Node {
+ public:
+  const int DrawingSize{34};
+  const QPoint start_pos{360, 150};
 
-		bool Contain(int number);
-		int GetSmallestNumber();
-		int GetLargestNumber();
-		void GetSortedVector(std::vector<int>& a);
-		void Insert(Data NewData);
-		bool IsSymetrical();
-        void ResetLastLabel();
+  static int left_nodes;
+  static int right_nodes;
+  Data _data;
 
-        std::vector<Data> SetPositionOfNodesForVisualization();
-        std::vector<QPoint> GetVectorOfLinesBetwenNodes();
+  bool Contain(int number);
+  int GetSmallestNumber();
+  int GetLargestNumber();
+  void GetSortedVector(std::vector<int>& a);
+  void Insert(Data NewData);
+  bool IsSymetrical();
+  void ResetLastLabel();
 
-		Node(Data NewData);
-		~Node();
+  std::vector<Data> SetPositionOfNodesForVisualization();
+  std::vector<QPoint> GetVectorOfLinesBetwenNodes();
 
-	private:
-        Node *_left = nullptr, *_right = nullptr;        
+  Node(Data NewData);
+  ~Node();
 
-        void ReturnDataVector(std::vector<Data>& vector);
-        void LoopForLinesConnection(std::vector<QPoint>& vec);
-        void SetDataForDrawing(Node& root);
-        void SetPos(int& pos);
-        void SetLevel(int& level);
-		void SymetricalChecking(std::vector<int>& vec);
-	};
-}
+ private:
+  Node *_left = nullptr, *_right = nullptr;
+
+  void ReturnDataVector(std::vector<Data>& vector);
+  void LoopForLinesConnection(std::vector<QPoint>& vec);
+  void SetDataForDrawing(Node& root);
+  void SetPos(int& pos);
+  void SetLevel(int& level);
+  void SymetricalChecking(std::vector<int>& vec);
+};
+}  // namespace Tree
